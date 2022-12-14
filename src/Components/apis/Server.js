@@ -1,51 +1,49 @@
 import axios from "axios"
 import config from "../../Resources/Config/config"
 
-const token = JSON.parse(localStorage.getItem("accessToken"))
+var token = JSON.parse(localStorage.getItem("accessToken"))
 
+/** header of all requests */
 const headers = {
     access_token: token
 }
 
+/** Server full HTTP */
 const timeout = 7000
 const timeoutErrorMessage = "Czas na odpowiedź serwera upłynął"
 const HTTP = `${config.url}:${config.port}`
 
+/**
+ * Run always when server return error
+ *
+ * @param {error} e server error response
+ */
 const serverError = function (e) {
-    console.trace(e)
+    //console.trace(e)
     throw e;
 }
 
+/**
+ * Run always when server success
+ *
+ * @param {json} response server response
+ */
 const serverSuccess = (response) => {
-    reloadToken()
+    //reloadToken()
     let accessToken = response.headers.access_token
     if (accessToken) {
         localStorage.setItem('accessToken', JSON.stringify(accessToken));
     }
+    reloadToken()
 }
 const reloadToken = () => {
     headers.access_token = JSON.parse(localStorage.getItem("accessToken"))
 }
 
 export default class Server {
-
+    
     static authenticate(data) {
-        console.log(`${HTTP}/users/authenticate`);
         return axios.post(`${HTTP}/users/authenticate`, data, { timeout, timeoutErrorMessage })
-            .then((response) => {
-                serverSuccess(response)
-                return response.data
-            }).catch((e) => {
-                return serverError(e)
-            })
-    }
-
-    static getUserByNameAD(data) {
-        const params = {
-            query: `${data.username ? `cn=*${data.username}*` : `cn=*`}`
-            // query: `cn=*${data.username}*`
-        }
-        return axios.get(`${HTTP}/users/ad/find-users`, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
                 serverSuccess(response)
                 return response.data
@@ -124,10 +122,10 @@ export default class Server {
             })
     }
 
-    static getTestById(data) {
+    static getTestById(data, full = true) {
         let params = {
             id: data.id,
-            full: true
+            full: full
         }
         return axios.get(`${HTTP}/tests/find`, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -182,6 +180,7 @@ export default class Server {
             })
     }
 
+    
     static deleteTest(params) {
         return axios.delete(`${HTTP}/tests/delete`, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -191,6 +190,10 @@ export default class Server {
                 return serverError(e)
             })
     }
+
+    //
+    // -- QUESTIONS --
+    //
 
     static getQuestions(params) {
         return axios.get(`${HTTP}/questions/find`, { params, headers, timeout, timeoutErrorMessage })
@@ -202,6 +205,7 @@ export default class Server {
             })
     }
 
+    
     static sendQuestions(questions) {
         return axios.post(`${HTTP}/questions/add`, questions, { headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -212,6 +216,7 @@ export default class Server {
             })
     }
 
+    
     static editQuestions(params, question) {
         return axios.put(`${HTTP}/questions/edit`, question, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -222,6 +227,7 @@ export default class Server {
             })
     }
 
+    
     static deleteQuestions(params) {
         return axios.delete(`${HTTP}/questions/delete`, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -232,6 +238,7 @@ export default class Server {
             })
     }
 
+    
     static sendAnswers(userAnswers) {
         return axios.post(`${HTTP}/answers/add`, userAnswers, { headers, timeout, timeoutErrorMessage })
             .then(response => {
@@ -242,8 +249,9 @@ export default class Server {
             })
     }
 
+    
     static getAnswers(data) {
-        return axios.get(`${HTTP}/answers/add`, { params: data, headers, timeout, timeoutErrorMessage })
+        return axios.get(`${HTTP}/answers/find`, { params: data, headers, timeout, timeoutErrorMessage })
             .then(response => {
                 serverSuccess(response)
                 return response.data
@@ -251,6 +259,10 @@ export default class Server {
                 return serverError(e)
             })
     }
+
+    //
+    // -- RESULTS --
+    //
 
     static getResults(params) {
         return axios.get(`${HTTP}/results/find`, { params, headers, timeout, timeoutErrorMessage })
@@ -262,6 +274,7 @@ export default class Server {
             })
     }
 
+
     static getFullResults(params) {
         return axios.get(`${HTTP}/results/find?full=true`, { params, headers, timeout, timeoutErrorMessage })
             .then((response) => {
@@ -271,6 +284,10 @@ export default class Server {
                 return serverError(e)
             })
     }
+
+    //
+    // -- FILES --
+    //
 
     static uploadFiles(params, body) {
         return axios.post(`${HTTP}/files/upload`, body, { params, headers, timeout, timeoutErrorMessage })
