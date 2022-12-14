@@ -63,7 +63,7 @@ describe('Authentication ', () => {
 
 describe('Finding User ', () => {
     it('finding user by correct name', async() => {
-        var result = await Server.getUsers({'name': 'student'})
+        var result = await Server.getUsers({'name': 'student', 'page': 1, 'page_size': 1})
             .then((response) => {
                 return response;
             }).catch((error) => {

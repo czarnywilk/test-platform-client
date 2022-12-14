@@ -3,6 +3,7 @@ import React from "react";
 import './App.css';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 
+import Sidebar from "./Components/sidebar";
 import MainPageScreen from "./Routes/MainPageScreen";
 import SearchTest from "./Routes/SearchTest.js";
 import MainForm from "./Routes/MainForm";
@@ -19,6 +20,7 @@ class App extends React.Component {
   
   render() {
     const {permissions} = this.state
+    //localStorage.clear();
     const isLogged = (localStorage.getItem("user"))
     return(
                   <div className="d-flex flex-nowrap" style={{
@@ -28,6 +30,7 @@ class App extends React.Component {
                 overflowY: "hidden",
             }}>
         <Router>
+          {localStorage.getItem("user") !== null && <Sidebar permissions={permissions}/>}
           <div className="overflow-auto" style={{width: "100%", minWidth: "500px"}}>
             <Switch>
                     <Route exact path="/">
@@ -66,4 +69,3 @@ class App extends React.Component {
 }
 
 export default App;
-
