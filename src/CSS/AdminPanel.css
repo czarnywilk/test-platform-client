@@ -1,0 +1,36 @@
+.panelLeftBtn, .quizComponentLeftBtn {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.panelRightBtn, .quizComponentRightBtn {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.midBtn, .panelLeftBtn, .panelRightBtn {
+    display: flex;
+    flex-grow: 1;
+}
+
+.panelViewBtn {
+    width: 30%;
+}
+
+.singleView:hover {
+    outline-style: solid;
+    outline-color: #c3c3c3;
+}
+
+.midBtn {
+    border-radius: 0 !important;
+}
+
+.quizControls {
+    color: white;
+    font-size: 48px;
+}
+
+.btn:focus {
+    z-index: 5;
+}

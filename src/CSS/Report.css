@@ -1,0 +1,13 @@
+.labels {
+    display: flex;
+    align-self: flex-start;
+}
+
+textarea, select {
+    border-radius: 15px;
+    padding: 3px;
+}
+
+.modal-footer{
+    border-radius: 5px !important;
+}

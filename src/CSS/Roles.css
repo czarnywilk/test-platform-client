@@ -1,0 +1,12 @@
+.switch {
+    font-size: 20px;
+}
+
+.fab {
+    border-radius: 100px;
+    opacity: 0.5;
+}
+
+.fab:hover {
+    opacity: 1;
+}
