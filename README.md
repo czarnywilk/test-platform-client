@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Platforma do rozwiązywania quizów
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Nasza aplikacja służy do weryfikowania wiedzy uczniów w ramach opracowanych przez nauczycieli testów. Każdy z zalogowanych użytkowników będzie posiadać przypisaną grupę charakteryzującą się odpowiednimi uprawnieniami. Informacje o użytkownikach, testach i wynikach będą przechowywane w bazie danych. Testy jednostkowe kontrolujące pomyślny przebieg operacji będą wykonywane w języku JavaScript.
+## Funkcjonalności:
+1. **Tworzenie konta** – rejestrujący się użytkownik podaje swoje dane: login i hasło. Po utworzeniu konta zostaje mu przypisana podstawowa grupa „Uczeń”, możliwa do podmiany przez administratora.
+2. **Autentykacja** – w ramach logowania się użytkownik podaje login i hasło. Następnie aplikacja wysyła do bazy danych zapytanie odnośnie poprawności wprowadzonych informacji.
+3. **Tworzenie quizów** – testy są tworzone za pomocą formularza i następnie przesyłane do bazy danych w postaci obiektu JSON.
+4. **Przeglądanie quizów** – zostają pobrane wszystkie testy, spośród których użytkownik może wybrać ten, który chce wykonać. 
+5. **Rozwiązywanie quizów** – test wyświetla się jako kolejne pytania z określoną liczbą możliwych odpowiedzi. Pytanie może być wielokrotnego wyboru.
+6. **Podgląd wyników** – wyświetlone zostają wszystkie dostępne wyniki. Za pomocą pól tekstowych i przycisku „Szukaj” użytkownik ma możliwość filtrowania rezultatów na podstawie nazwy użytkownika lub testu.
+7. **Zarządzanie bazą** – administrator ma prawo przydzielać użytkownikom grupy, zmieniać zakres uprawnień poszczególnych grup i usuwać testy.
 
-## Available Scripts
+[Dokumentacja Swagger](https://app.swaggerhub.com/apis-docs/IreneuszSob/test-platform-server-api/1.0.0)
+![Diagram ERD](ERD.png)
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Podział prac:
+**Ireneusz Sobol**:
+Opracowanie frontendu aplikacji oraz testów jednostkowych rozwiązywania quizów </br>
+**Adrian Tarza**:
+Przygotowanie bazy danych i jej dokumentacji oraz testów jednostkowych połączenia z serwerem </br>
+**Tomasz Tarnowski**:
+Opracowanie serwera Node, jego testów jednostkowych oraz dokumentacji API w Swaggerze </br>
