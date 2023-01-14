@@ -48,11 +48,21 @@ class Sidebar extends React.Component {
             <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{ width: "200px" }}>
                 <NavLink to="/" style={{ textDecoration: 'none' }}>
                     <span className="fs-4">
-                        <img src="QuizLogo.png" className="img-fluid" alt="Koala logo" />
+                        <img src="QuizLogo.png" className="img-fluid" alt="Quiz logo" />
                     </span>
                 </NavLink>
                 <hr />
                 <ul className="nav nav-pills flex-column mb-auto">
+
+                    {
+                        permissions.can_manage_tests &&
+                        <NavLink to="/AddTest" className="nav-link link-dark onHover" style={{ textDecoration: 'none' }}>
+                            <li className="nav-item">
+                                <i className="bi-clipboard2-check-fill" style={{ paddingRight: "5px" }} />
+                                Dodaj Test
+                            </li>
+                        </NavLink>
+                    }
 
                     {
                         <NavLink to="/SearchTest" className="nav-link link-dark onHover" style={{ textDecoration: 'none' }}>
@@ -62,6 +72,64 @@ class Sidebar extends React.Component {
                             </li>
                         </NavLink>
                     }
+
+                    {
+                        permissions.can_access_admin_panel &&
+                        <div className="nav-link link-dark dropdownContainer"
+                            style={{ textDecoration: 'none', paddingLeft: "3px", paddingTop: 0, paddingBottom: 0 }}>
+                            <li className="btn btn-toggle nav-item" data-bs-toggle="collapse"
+                                data-bs-target="#dashboard-collapse" aria-expanded="true"
+                                onClick={this.handleToggle}>
+                                <div className="position-relative float-start">
+                                    <i className={`icon bi-person-workspace`} style={{ paddingRight: "5px" }} />
+                                    <span className="">Admin</span>
+                                </div>
+                                <i className={`icon ${this.state.dropDownArrow} position-relative float-end`}
+                                    style={{ float: "left", marginLeft: '20px' }} />
+                            </li>
+                            <div className="collapse" id="dashboard-collapse">
+                                <ul className="btn-toggle-nav list-unstyled small">
+                                    <li>
+                                        <NavLink to={{
+                                            pathname: "/admin/Quizy",
+                                            state: { card: 'Quizy' }
+                                        }} className="nav-link link-dark rounded dropdownNav pb-1 pt-1 onHover"
+                                            onContextMenu={(e) => {
+                                                e.preventDefault()
+                                            }}>Testy</NavLink></li>
+                                    <li>
+                                        <NavLink to={{
+                                            pathname: "/admin/Uzytkownicy",
+                                            state: { card: 'Uzytkownicy' }
+                                        }} className="nav-link link-dark rounded dropdownNav pb-1 pt-1 onHover"
+                                            onContextMenu={(e) => {
+                                                e.preventDefault()
+                                            }}>Użytkownicy</NavLink></li>
+                                    <li>
+                                    <NavLink to={{
+                                            pathname: "/manageRoles",
+                                            state: { card: 'Roles' }
+                                        }} className="nav-link link-dark rounded dropdownNav pb-1 pt-1 onHover"
+                                            onContextMenu={(e) => {
+                                                e.preventDefault()
+                                            }}>Uprawnienia</NavLink>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+
+                    {
+                        permissions.can_view_stats &&
+                        <NavLink to="/Stats" className="nav-link link-dark onHover" style={{ textDecoration: 'none' }}>
+                            <li className="nav-item">
+                                <i className="icon bi-bar-chart-line-fill" style={{ paddingRight: "5px" }} />
+                                Statystyki
+                            </li>
+                        </NavLink>
+                    }
+
                 </ul>
                 
                 <hr />

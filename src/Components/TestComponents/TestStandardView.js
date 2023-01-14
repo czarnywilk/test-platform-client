@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import TextPaginate from "../Utils/TextPaginate";
+import DateConverter from "../Utils/DateConverter";
 
 class TestStandardView extends React.Component {
 
@@ -54,29 +55,41 @@ class TestStandardView extends React.Component {
         const {data} = this.props
         return (
             <div className="singleView bg-gray-200 d-flex flex-column roundAll overflow-hidden"
-                 style={{marginBottom: '10px', height: '80px'}}>
+                 style={{marginBottom: '10px', height: '100px'}}>
 
                 <div className="d-flex h-100">
                     <div className="d-flex flex-column text-start"
                          style={{marginLeft: '30px', marginTop: '20px', width: '35%'}}>
-                        <h2 className="card-title">{TextPaginate(data.test_name, 50)}</h2>
+                        <h2 className="card-title">{TextPaginate(data.test_name, 200)}</h2>
+                    </div>
+                    
+                    <div className='d-flex' style={{marginTop: '65px', width: '70%',gap: '30px'}}>
                         {
-                            data["tags"] &&
-                            "Tagi: " + TextPaginate(data["tags"], 50)
+                            data.start_time ?
+                                <p className="bi-hourglass-top">
+                                   Dostępne od: {DateConverter.TimestampToDate(data.start_time)}
+                                </p>
+                                :
+                                ""
+                        }
+                        {
+                            data.end_time ?
+                                <p className="bi-hourglass-bottom">
+                                    Dostępne do: {DateConverter.TimestampToDate(data.end_time)}
+                                </p>
+                                :
+                                ""
                         }
                     </div>
-                    <div className='d-flex' style={{marginTop: '40px', width: '12%'}}>
-
-                    </div>
                     <div className="d-flex justify-content-end w-50 h-100 align-items-center">
-                        <Link to={{pathname: '/quiz', search: `?id=${this.props.data.id}`}}
-                              className="btn btn-primary roundAll d-flex justify-content-center align-items-center"
+                        <Link to={{pathname: `/quiz/${this.props.data.id}`}}
+                              className="btn btn-primary  roundAll d-flex justify-content-center align-items-center"
                               style={{
                                   width: '150px',
                                   marginLeft: "20px",
                                   pointerEvents: this.checkTestValidityByDate(data) ? 'auto' : 'none'
                               }}>
-                            {/* <i className="bi-caret-right quizControls" style={{fontSize: '60px'}}/> */}
+
                             Rozwiąż
                         </Link>
                     </div>

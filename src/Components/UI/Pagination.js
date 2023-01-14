@@ -57,9 +57,6 @@ export default class Pagination extends React.Component {
                 pageCount: 0,
                 errorMessage: e.message,
             })
-            //let toastBody = <MyToast title="Błąd" text={e.message}/>
-            let icon = <i className='bi-x-circle-fill' style={{fontSize: "1.3rem", color: "#dc3545"}}/>
-            //toast(toastBody, {icon: icon})
         }
     }
 

@@ -12,32 +12,12 @@ export default class SearchTest extends React.Component {
         super(props);
         this.state = {
             isOpen: false,
-            isLoaded: false,
-            quizzes: [],
-            realQuizzes: [],
             filters: [],
             search: '',
             data: [],
         };
         this.child = React.createRef()
         this._filters = []
-    }
-
-    getQuizzes = async () => {
-        try {
-            const [data, headers] = await Server.getAllTests()
-            this.setState({
-                quizzes: data,
-                realQuizzes: data,
-                isLoaded: true
-            });
-        } catch (e) {
-            //ErrorToast(e)
-        }
-    }
-
-    componentDidMount() {
-        this.getQuizzes()
     }
 
     handleChange = (e) => {
@@ -127,7 +107,7 @@ export default class SearchTest extends React.Component {
                                     instance={{
                                         marginPages: 1,
                                         pageRange: 3,
-                                        perPage: 2,
+                                        perPage: 8,
                                         form: this.state.filters.join(),
                                         searchPhrase: this.state.search,
                                         apiCall: Server.getAllTests

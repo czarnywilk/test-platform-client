@@ -25,7 +25,6 @@ class MainForm extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault();
         const {username, password} = this.state;
-        //NOTE: change to toast.promise
         Server.authenticate({username, password})
             .then((response) => {
                 if (!response[0].message) {
