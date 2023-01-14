@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class CardBarComponent extends React.Component {
 
@@ -20,13 +20,19 @@ class CardBarComponent extends React.Component {
                 height: "50px",
             }}>
 
-                <NavLink to={{pathname: "/admin/Quizy", state: {card: "Quizy"}}} type="button"
-                        className="btn btn-primary panelLeftBtn roundLeft d-flex justify-content-center align-items-center fontSize20"
-                        onContextMenu={(e) => {e.preventDefault()}}>Quizy
+                <NavLink to={{ pathname: "/admin/Quizy", state: { card: "Quizy" } }} type="button"
+                    className="btn btn-primary panelLeftBtn roundLeft d-flex justify-content-center align-items-center fontSize20"
+                    onContextMenu={(e) => { e.preventDefault() }}>Quizy
                 </NavLink>
-                <NavLink to={{pathname: "/admin/Uzytkownicy", state: {card: "Uzytkownicy"}}} type="button"
-                        className="btn btn-primary panelRightBtn roundRight d-flex justify-content-center align-items-center fontSize20"
-                        onContextMenu={(e) => {e.preventDefault()}}>Użytkownicy
+
+                <NavLink to={{ pathname: "/admin/Uzytkownicy", state: { card: "Uzytkownicy" } }} type="button"
+                    className="btn btn-primary midBtn d-flex justify-content-center align-items-center fontSize20"
+                    onContextMenu={(e) => { e.preventDefault() }}>Użytkownicy
+                </NavLink>
+
+                <NavLink to={{ pathname: "/manageRoles", state: { card: "Uprawnienia" } }} type="button"
+                    className="btn btn-primary panelRightBtn roundRight d-flex justify-content-center align-items-center fontSize20"
+                    onContextMenu={(e) => { e.preventDefault() }}>Uprawnienia
                 </NavLink>
 
             </div>

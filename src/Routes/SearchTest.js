@@ -15,6 +15,7 @@ export default class SearchTest extends React.Component {
             filters: [],
             search: '',
             data: [],
+            groups: [],
         };
         this.child = React.createRef()
         this._filters = []
@@ -31,6 +32,11 @@ export default class SearchTest extends React.Component {
 
     receiveDataFromChild = (data) => {
         this.setState({data})
+    }
+
+    async componentDidMount(){
+        const groups = await Server.getAllGroups()
+        this.setState({groups})
     }
 
     updateFilters = (e) => {
@@ -96,9 +102,10 @@ export default class SearchTest extends React.Component {
                                 borderRadius: '5px'
                             }}>
                                 {
+                                    
                                     this.state.data.map((item, i) => {
                                         return (
-                                            <TestStandardView key={i} data={item}/>
+                                            <TestStandardView key={i} data={item} groupNames = {this.state.groups.map(s=>s.group_name)}/>
                                         )
                                     })
                                 }

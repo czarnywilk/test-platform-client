@@ -4,8 +4,8 @@ import {toast} from "react-toastify";
 import MyToast from "../Components/Modals/MyToast";
 import Server from "../Components/apis/Server";
 import {Redirect} from "react-router-dom";
-import ErrorMessage from "../Components/Utils/ErrorMessages";
 import ErrorToast from "../Components/Modals/ErrorToast";
+import CardBarComponent from "../Components/AdminPanelComponents/Views/SubComponents/CardBarComponent";
 
 export default class RoleManagementScreen extends React.Component {
 
@@ -121,6 +121,7 @@ export default class RoleManagementScreen extends React.Component {
     hasAccess(){
         return (
             <div>
+                
                 <div
                     className="bg-gray-100 position-relative d-flex flex-wrap flex-row justify-content-start roundAll padding15"
                     style={{
@@ -131,6 +132,7 @@ export default class RoleManagementScreen extends React.Component {
                         rowGap: "15px",
                         margin: "35px",
                     }}>
+                    <CardBarComponent/>
                     <input type="text" className="d-flex padding15" style={{
                         width: "100%",
                         backgroundColor: "white",

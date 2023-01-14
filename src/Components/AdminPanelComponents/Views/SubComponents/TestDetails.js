@@ -33,9 +33,7 @@ class TestDetails extends React.Component {
                                     <td>Dla grup:</td>
                                     <td>
                                         {
-                                            (groupNames && groupNames.length>0) ? groupNames.map((item, i) => {
-                                                return i === groupNames.length - 1 ? item : item + ", "
-                                            }) : this.noDefError
+                                            (groupNames && groupNames.length>0) ? groupNames.join(", ") : this.noDefError
                                         }
                                     </td>
                                 </tr>
