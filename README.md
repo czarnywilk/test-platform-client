@@ -35,7 +35,7 @@ Użytkownik ma możliwość utworzenie nowego konta, jeśli poda nową nazwę u�
 
 ![Błąd logowania](images/b%C5%82%C4%85d-logowania.png)
 
-Po właściwym zalogowaniu się użytkownika aplikacja przeniesie go do samej aplikacji:
+Po właściwym zalogowaniu się użytkownika aplikacja przeniesie go do strony głównej:
 
 ![Po logowaniu](images/po-logowaniu.png)
 
