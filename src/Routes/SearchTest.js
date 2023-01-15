@@ -105,7 +105,8 @@ export default class SearchTest extends React.Component {
                                     
                                     this.state.data.map((item, i) => {
                                         return (
-                                            <TestStandardView key={i} data={item} groupNames = {this.state.groups.map(s=>s.group_name)}/>
+
+                                            <TestStandardView key={i} data={item} groupNames = {(item.groups || []).map(g=>this.state.groups.length>0 ? this.state.groups[g-1].group_name : "")}/>
                                         )
                                     })
                                 }

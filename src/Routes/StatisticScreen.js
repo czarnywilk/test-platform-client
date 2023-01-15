@@ -91,13 +91,6 @@ export default class StatisticScreen extends React.Component {
                             <h2>Statystyki</h2>
                         </div>
                     </div>
-                    <div className="d-flex w-100" style={{
-                        height: "50px",
-                    }}>
-                        <button className="btn btn-primary panelLeftBtn roundLeft d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Tabela") }}>Tabela</button>
-                        <button className="btn btn-primary midBtn d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Wykres") }}>Wykres</button>
-                        <button className="btn btn-primary btn-primary panelRightBtn roundRight d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Attempt") }}>Podejścia</button>
-                    </div>
 
                     <form>
                         {/*  NAME INPUT */}
@@ -135,9 +128,20 @@ export default class StatisticScreen extends React.Component {
                                     Szukaj
                                 </button>
                             </div>
+
                         </div>
+
                     </form>
-                    <div className="col-10 mt-4" >
+
+                    <div className="d-flex col-12" style={{
+                        height: "40px", marginTop:"50px"
+                    }}>
+                        <button className="btn btn-primary panelLeftBtn roundLeft d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Tabela") }}>Tabela</button>
+                        <button className="btn btn-primary midBtn d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Wykres") }}>Wykres</button>
+                        <button className="btn btn-primary btn-primary panelRightBtn roundRight d-flex justify-content-center align-items-center fontSize20" type="button" onClick={() => { this.showChange("Attempt") }}>Podejścia</button>
+                    </div>
+
+                    <div className="col-12 mt-4" >
                         {this.showData()}
                     </div>
                 </div>

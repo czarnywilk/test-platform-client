@@ -96,7 +96,7 @@ class Sidebar extends React.Component {
                                         }} className="nav-link link-dark rounded dropdownNav pb-1 pt-1 onHover"
                                             onContextMenu={(e) => {
                                                 e.preventDefault()
-                                            }}>Testy</NavLink></li>
+                                            }}>Quizy</NavLink></li>
                                     <li>
                                         <NavLink to={{
                                             pathname: "/admin/Uzytkownicy",

@@ -21,7 +21,9 @@ export default class QuizScreen extends React.Component {
 
     getData = async (id) => {
         try {
+
             const data = await Server.getTestById({ id })
+
             this.setState({
                 data: data,
                 isLoaded: true,
