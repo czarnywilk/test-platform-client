@@ -43,7 +43,7 @@ class ResultScreen extends React.Component {
                 </div>
                 <div>
                     {questions.map((question, i) => <ResultSingleQuestion
-                    idx={i + 1} key={i} question={question.name} answer={question.answers}
+                    idx={i + 1} key={i} question={question.question} answer={question.answers}
                     correctAnswers={question.correct_answer_idx} userAnswer={answers[i]}/>)}
                 </div>
                 <div className="row">

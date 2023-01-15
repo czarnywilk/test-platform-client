@@ -37,7 +37,7 @@ class TestStandardView extends React.Component {
 
                             {
                                 this.props.groupNames.length > 0 ?
-                                    <p class="bi bi-people-fill w-50">
+                                    <p className="bi bi-people-fill w-50">
                                         {" " + this.props.groupNames.join(", ")}
                                     </p>
                                     :

@@ -105,6 +105,10 @@ class App extends React.Component {
                 {isLogged ? <UserDetails /> : <Redirect to='/signin' />}
               </Route>
 
+              <Route path="/accessError">
+                <NoAccess />
+              </Route>
+
               <Route path='*' > {isLogged ? <MainPageScreen /> : <Redirect to='/signin' />}
               </Route>
             </Switch>

@@ -3,31 +3,21 @@ import config from "../../Resources/Config/config"
 
 var token = JSON.parse(localStorage.getItem("accessToken"))
 
-/** header of all requests */
 const headers = {
     access_token: token
 }
 
-/** Server full HTTP */
 const timeout = 7000
 const timeoutErrorMessage = "Czas na odpowiedź serwera upłynął"
 const HTTP = `${config.url}:${config.port}`
 
-/**
- * Run always when server return error
- *
- * @param {error} e server error response
- */
+
 const serverError = function (e) {
     //console.trace(e)
     throw e;
 }
 
-/**
- * Run always when server success
- *
- * @param {json} response server response
- */
+
 const serverSuccess = (response) => {
     //reloadToken()
     let accessToken = response.headers.access_token
