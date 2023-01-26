@@ -12,7 +12,11 @@ Nasza aplikacja służy do weryfikowania wiedzy uczniów w ramach opracowanych p
 
 [Dokumentacja Swagger](https://app.swaggerhub.com/apis-docs/IreneuszSob/test-platform-server-api/1.0.0)
 
+## Diagram ERD
 ![Diagram ERD](images/ERD.png)
+
+## Diagram przypadków użycia
+![Diagram przypadków użycia](images/test-platform-use-cases.png)
 
 ## Podział prac
 **Ireneusz Sobol**:
@@ -22,12 +26,15 @@ Przygotowanie bazy danych i jej dokumentacji oraz testów jednostkowych połącz
 **Tomasz Tarnowski**:
 Opracowanie serwera Node, jego testów jednostkowych oraz dokumentacji API w Swaggerze </br>
 
+## Architektura
+Projekt opiera się na architekturze klient-serwer, która bazuje na ustaleniu, że serwer zapewnia usługi dla klientów, którzy zgłaszają do niego żądania obsługi. Zastosowania takiej architektury zapewnia lepsze zabezpieczenie danych, ponieważ znajdują się one tylko na serwerze. Jedynie serwer na prawo do odczytania i zmiany danych. Oznacza to także, że instancja serwera musi być ciągle włączoną, aby móc dostarczać dane do klientów. Duża liczba klientów próbujących otrzymać dane z jednego serwera może powodować różnego typu problemy związane z przepustowością łącza oraz technicznymi możliwościami przetworzenia żądań klientów.
+
 ## Instrukcja uruchomienia projektu
 W pierwszej kolejności należy utworzyć w programie pgAdmin bazy danych o nazwach test_platform_db oraz test_platform_db_dev i uruchomić dla nich skrypt test_db_backup.sql zawarty w folderze data. Pierwsza z nich posłuży jako oficjalna baza danych łącząca się z klientem, druga - baza testowa, służąca do przeprowadzania testów jednostkowych.
 
 W celu właściwego przeprowadzenia testów jednostkowych klienta należy uruchomić serwer w trybie testowym, za pomocą komendy ```npm run test-server```, a następnie wywołać komendę ```npm test a``` w folderze klienta. Aby uruchomić testy jednostkowe dla serwera, wystarczy użyć polecenia ```npm test a``` w jego folderze.
 
-Aby uruchomić serwer i klienta w normalnym trybie, należy użyć komend - analogiczne ```node index.js``` dla serwera oraz ```npm start``` dla aplikacji sieciowej. Po właściwym zastosowaniu obu poleceń w przeglądarce uruchomiona zostanie aplikacja React:
+Aby uruchomić serwer i klienta w normalnym trybie, należy użyć komend - analogiczne ```npm start``` dla serwera oraz ```npm start``` dla aplikacji sieciowej. Po właściwym zastosowaniu obu poleceń w przeglądarce uruchomiona zostanie aplikacja React:
 
 ![Ekran startowy](images/ekran-startowy.png)
 
